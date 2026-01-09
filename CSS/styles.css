@@ -7,10 +7,10 @@
 :root {
     --color-primary: #0d0d0d;
     --color-secondary: #0d0d0d;
-    --color-accent: #808080;
+    --color-accent: #6CE089;
     --color-text: #ffffff;
     --color-text-light: #b0b0b0;
-    --color-text-lighter: #808080;
+    --color-text-lighter: #6CE089;
     --color-border: #333333;
     --color-bg-light: #1a1a1a;
     
@@ -158,11 +158,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 12px;
-    border-bottom: 1px solid var(--color-border);
-    background-color: rgba(13, 13, 13, 0.75);
-    backdrop-filter: blur(10px);
-    position: sticky;
+    background-color: transparent;
+    backdrop-filter: none;
+    position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -194,7 +195,7 @@ header {
 .site-subtitle {
     display: block;
     font-size: var(--font-size-sm);
-    color: var(--color-text-lighter);
+    color: #808080;
 }
 
 nav {
@@ -229,7 +230,7 @@ nav {
     z-index: 9999;
     padding: 80px 24px 24px 24px;
     overflow-y: auto;
-    border-left: 1px solid #808080;
+    border-left: 1px solid #6CE089;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -303,7 +304,7 @@ button {
 
 .btn-cta-primary,
 .btn-primary {
-    background-color: #808080;
+    background-color: #6CE089;
     color: #1a1a1a;
     padding: var(--spacing-md) var(--spacing-xl);
     border-radius: 0;
@@ -317,14 +318,15 @@ button {
 
 .btn-cta-primary:hover,
 .btn-primary:hover {
-    background-color: #a0a0a0;
+    background-color: #808080;
+    color: #1a1a1a;
 }
 
 .btn-cta-secondary {
     background-color: transparent;
-    color: #808080;
+    color: #6CE089;
     padding: var(--spacing-md) var(--spacing-xl);
-    border: 2px solid #808080;
+    border: 2px solid #6CE089;
     border-radius: 0;
     font-size: var(--font-size-base);
     font-weight: 600;
@@ -332,16 +334,17 @@ button {
 }
 
 .btn-cta-secondary:hover {
-    background-color: var(--color-text);
-    color: var(--color-secondary);
+    background-color: #808080;
+    color: #1a1a1a;
+    border-color: #808080;
 }
 
 /* Secondary button: same style as CTA secondary but smaller */
 .btn-secondary {
     background-color: transparent;
-    color: #808080;
+    color: #6CE089;
     padding: var(--spacing-sm) var(--spacing-lg);
-    border: 1px solid #808080;
+    border: 1px solid #6CE089;
     border-radius: 0;
     font-size: var(--font-size-sm);
     font-weight: 600;
@@ -349,8 +352,9 @@ button {
 }
 
 .btn-secondary:hover {
-    background-color: var(--color-text);
-    color: var(--color-secondary);
+    background-color: #808080;
+    color: #1a1a1a;
+    border-color: #808080;
 }
 
 /* ===========================
@@ -360,33 +364,27 @@ button {
 #hero {
     padding: 124px 24px;
     background:
-        repeating-linear-gradient(
-            0deg,
-            #1a1a1a 0px,
-            #1a1a1a 1px,
-            transparent 1px,
-            transparent 48px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            #1a1a1a 0px,
-            #1a1a1a 1px,
-            transparent 1px,
-            transparent 48px
-        ),
-        linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-secondary) 100%);
-    background-size: 100% 48px, 48px 100%, 100% 100%;
-    background-position: 0 0, 0 0, 0 0;
+        linear-gradient(rgba(13, 13, 13, 0.75), rgba(13, 13, 13, 0.75)),
+        url('../Resources/Images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     gap: var(--spacing-3xl);
-    min-height: calc(100vh - var(--header-height, 0px));
+    min-height: 100vh;
     box-sizing: border-box;
 }
 
 .hero-container {
     max-width: 100%;
     flex: 1;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0;
     text-align: left;
 }
@@ -419,6 +417,7 @@ button {
 .hero-features {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
     margin-top: var(--spacing-xl);
 }
@@ -490,8 +489,8 @@ button {
 }
 
 #who-it-is-for {
-    padding: 124px 24px;
-    background-color: var(--color-secondary);
+    padding: 0;
+    background-color: transparent;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -500,7 +499,9 @@ button {
     text-align: center;
     font-family: var(--font-sans);
     font-size: 24px;
-    margin-bottom: var(--spacing-2xl);
+    color: #808080;
+    font-weight: 300;
+    text-shadow: none;
 }
 
 .who-it-is-for-list {
@@ -511,6 +512,14 @@ button {
     gap: var(--spacing-lg);
     max-width: 75%;
     margin: 0 auto;
+}
+
+#who-it-is-for .who-it-is-for-list p {
+    color: #ffffff;
+}
+
+#who-it-is-for .vertical-line {
+    background-color: #ffffff;
 }
 
 .services-list {
@@ -546,7 +555,6 @@ button {
 
 #portfolio {
     padding: 124px 24px;
-    background-color: var(--color-bg-light);
     max-width: 100%;
     margin: 0 auto;
 }
@@ -670,7 +678,7 @@ button {
 .dot {
     width: 10px;
     height: 10px;
-    background-color: #0D0D0D;
+    background-color: #1a1a1a;
     cursor: pointer;
     transition: background-color 0.3s ease;
     border: none;
@@ -678,7 +686,7 @@ button {
 }
 
 .dot.active {
-    background-color: #808080;
+    background-color: #6CE089;
 }
 
 .tags {
@@ -740,8 +748,8 @@ button {
     right: var(--spacing-md);
     width: 16px;
     height: 16px;
-    border: 1px solid #808080;
-    color: #808080;
+    border: 1px solid #6CE089;
+    color: #6CE089;
     background: transparent;
     display: flex;
     align-items: center;
@@ -762,7 +770,6 @@ button {
 
 #about-the-founder {
     padding: 124px 24px;
-    background-color: var(--color-bg-light);
     max-width: 100%;
     margin: 0 auto;
 }
@@ -910,13 +917,30 @@ button {
    =========================== */
 
 #cta-banner {
-    padding: 124px 0;
+    padding: 0;
     background-color: var(--color-primary);
     color: var(--color-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0px;
+    position: relative;
+    min-height: 100vh;
+    background-image: url('../Resources/Images/cta-banner-graphic.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 13, 13, 0.5);
+    z-index: 1;
 }
 
 #cta-banner h2 {
@@ -935,21 +959,21 @@ button {
 
 .cta-content {
     padding: var(--spacing-2xl) var(--spacing-2xl) 0 var(--spacing-2xl);
-    border: 1px solid #808080;
-    flex: 0 0 auto;
     width: 75%;
-    margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 .cta-content h2 {
     white-space: normal;
+    text-shadow: none;
 }
 
 .horizontal-line {
     width: 100%;
     height: 1px;
-    background-color: #808080;
+    background-color: #6CE089;
     margin: var(--spacing-2xl) 0;
 }
 
@@ -1232,13 +1256,15 @@ button {
    =========================== */
 
 footer {
-    padding: var(--spacing-xl) var(--spacing-2xl);
-    background-color: var(--color-primary);
+    padding: 12px;
     color: #FFFFFF;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xl);
+    position: relative;
+    margin-top: -48px;
+    z-index: 100;
 }
 
 footer p {
@@ -1252,7 +1278,7 @@ footer p {
     right: 24px;
     width: 48px;
     height: 48px;
-    background-color: #808080;
+    background-color: #6CE089;
     color: #FFFFFF;
     border: none;
     border-radius: 0;
@@ -1287,6 +1313,33 @@ footer p {
     .hero-container {
         flex: 1;
         width: 100%;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .hero-container h1 {
+        font-size: 48px;
+    }
+
+    .hero-container h1 span {
+        font-size: 36px;
+    }
+
+    .hero-container > p {
+        margin: 0 0 var(--spacing-2xl);
+        text-align: left;
+    }
+
+    .hero-meta {
+        justify-content: flex-start;
+    }
+
+    .hero-features {
+        align-items: flex-start;
+    }
+
+    .buttons-group {
+        justify-content: flex-start;
     }
 
     
@@ -1424,6 +1477,33 @@ footer p {
 
     .hero-container {
         width: 100%;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .hero-container h1 {
+        font-size: 36px;
+    }
+
+    .hero-container h1 span {
+        font-size: 28px;
+    }
+
+    .hero-container > p {
+        margin: 0 0 var(--spacing-2xl);
+        text-align: left;
+    }
+
+    .hero-meta {
+        justify-content: flex-start;
+    }
+
+    .hero-features {
+        align-items: flex-start;
+    }
+
+    .buttons-group {
+        justify-content: flex-start;
     }
 
     .buttons-group {
